@@ -20,7 +20,7 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
             __DIR__ . '/config/config.php' => config_path('simple-analytics.php'),
         ], 'config');
 
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'simple-analytics');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'SimpleAnalytics');
     }
 
     private function getAutoEvents () {
