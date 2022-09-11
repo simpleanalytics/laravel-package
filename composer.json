@@ -1,0 +1,27 @@
+{
+    "name": "rouuuge/simple-analytics",
+    "description": "Simple Analytics is a clean, simple, and privacy friendly analytics tool. Actionable data in a beautiful dashboard. It does not use cookies and you can bypass ad blockers. Make sure to signup to get most value out of this plugin.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Manuel Roth",
+            "email": "manuel.roth@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^9.29"
+    },
+    "autoload": {
+      "psr-4": {
+        "Rouuuge\\SimpleAnalytics\\": "src"
+      }
+    },
+    "extra": {
+      "laravel": {
+          "providers": [
+              "Rouuuge\\SimpleAnalytics\\SimpleAnalyticsServiceProvider"
+          ]
+      }
+  }
+}
