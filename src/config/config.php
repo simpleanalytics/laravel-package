@@ -3,6 +3,8 @@
 return [
     // Custom Domain simple.example.com
     'custom_domain' => null,
+    // Enable the script
+    'enabled' => true,
     // Change mode (hash)
     'data-mode' => null,
     // Collect DONotTrack visits
@@ -17,27 +19,26 @@ return [
     'data-hostname' => null,
     // Overwrite global
     'data-sa-global' => null,
-    // Enable the script
-    'enabled' => true,
-    // Automated Events
-    'automated_events' => false,
     // Non-unique hostnames
     'data-non-unique-hostnames' => null,
-
-    // EVENT SETTINGS
-    // Auto collect downloads
-    'data-collect' => array(),
-    // Download file extensions
-    'data-extensions' => array(),
-    // Use titles of page
-    'data-use-title' => false,
-    // Use full URLs
-    'data-full-urls' => false,
     // Override global
     'data-sa-global' => null,
 
     // Custom Settings
     // if a setting is missing add array key => value like:
     // 'data-collect-dark-mode' => true
-    'custom-settings' => array()
+    'custom-settings' => array(),
+
+    // EVENT SETTINGS
+    // Automated Events outbound,emails,downloads
+    'automated_events' => false,
+    // Auto collect downloads pdf,csv,docx,xlsx,zip,doc,xls
+    'data-collect' => array(),
+    // Download file extensions
+    'data-extensions' => array(),
+    // Use titles of page
+    'data-use-title' => true,
+    // Use full URLs
+    'data-full-urls' => false,
+
 ];

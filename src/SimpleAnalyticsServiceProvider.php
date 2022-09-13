@@ -10,8 +10,11 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/config/config.php', 'simple-analytics');
         view()->share('domain', $this->getDomain());
-        view()->share('auto_events', $this->getAutoEvents());
         view()->share('settings', $this->getSettings());
+        view()->share('settings_events', $this->getSettingsEvents());
+        view()->share('enabled', config('simple-analytics.enabled'));
+        view()->share('auto_events', config('simple-analytics.automated_events'));
+
     }
 
     public function boot()
@@ -21,11 +24,6 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'SimpleAnalytics');
-    }
-
-    private function getAutoEvents () {
-        // Automated events
-        return config('simple-analytics.automated_events') === true ? 'plus' : 'latest';
     }
 
     private function getDomain ()
@@ -62,30 +60,10 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
         if (config('simple-analytics.data-sa-global')) {
             $settings['data-sa-global'] = config('simple-analytics.data-sa-global');
         }
-        if (config('simple-analytics.enabled') === false) {
-            $settings['enabled'] = false;
-        }
-        if (config('simple-analytics.automated_events') === true) {
-            $settings['automated_events'] = true;
-        }
         if (config('simple-analytics.data-non-unique-hostnames')) {
             $settings['data-non-unique-hostnames'] = config('simple-analytics.data-non-unique-hostnames');
         }
-        if (count(config('simple-analytics.data-collect')) > 0) {
-            $settings['data-collect'] = config('simple-analytics.data-collect');
-        }
-        if (count(config('simple-analytics.data-extensions')) > 0) {
-            $settings['data-extensions'] = config('simple-analytics.data-extensions');
-        }
-        if (config('simple-analytics.data-use-title') === true) {
-            $settings['data-use-title'] = true;
-        }
-        if (config('simple-analytics.data-full-urls') === true) {
-            $settings['data-full-urls'] = true;
-        }
-        if (config('simple-analytics.data-sa-global')) {
-            $settings['data-sa-global'] = config('simple-analytics.data-sa-global');
-        }
+
         // Custom Settings
         if (count(config('simple-analytics.custom-settings')) > 0) {
             foreach (config('simple-analytics.custom-settings') as $key => $value) {
@@ -94,7 +72,27 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
             }
         }
 
+        return $this->parseSettings($settings);
+    }
 
+    private function getSettingsEvents()
+    {
+        // Settings
+        $settings = array();
+        if (count(config('simple-analytics.data-collect')) > 0) {
+            $settings['data-collect'] = config('simple-analytics.data-collect');
+        }
+        if (count(config('simple-analytics.data-extensions')) > 0) {
+            $settings['data-extensions'] = config('simple-analytics.data-extensions');
+        }
+        $settings['data-use-title'] = config('simple-analytics.data-use-title');
+        $settings['data-full-urls'] = config('simple-analytics.data-full-urls');
+
+        return $this->parseSettings($settings);
+    }
+
+    private function parseSettings($settings)
+    {
         // Setup settings for script
         $settings_str_array = array();
         foreach ($settings as $key => $value) {
