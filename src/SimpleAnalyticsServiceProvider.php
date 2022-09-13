@@ -97,11 +97,12 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
         $settings_str_array = array();
         foreach ($settings as $key => $value) {
             if (is_bool($value)) {
-                array_push($settings_str_array, "$key = '".$value == true ? 'true' : 'false'."'");
+                $bool_val = $value ? 'true' : 'false';
+                array_push($settings_str_array, $key.'="'.$bool_val.'"');
             } else if (is_array($value)) {
-               array_push($settings_str_array, "$key = '".implode(',', $value)."'");
+               array_push($settings_str_array, $key.'="'.implode(',', $value).'"');
             } else {
-               array_push($settings_str_array, "$key = $value");
+               array_push($settings_str_array, $key.'="'.$value.'"');
             }
         }
         return implode(' ', $settings_str_array);
