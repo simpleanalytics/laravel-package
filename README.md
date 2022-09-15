@@ -2,7 +2,7 @@
   <img src="https://assets.simpleanalytics.com/images/logos/logo-github-readme.png" alt="Simple Analytics logo" align="right" height="62" />
 </a>
 
-# Laravel Package for simpleanalytics.com
+# Laravel Package
 
 ## Installing it
 
@@ -25,9 +25,6 @@ Install the plugin:
 
 
 ## Using it
-
-
-
 
 Include the scripts before your end body tag in your .blad template:
 ```php
