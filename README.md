@@ -13,7 +13,7 @@ Install the plugin:
 ```
 "repositories": [
    {
-     "url": "https://github.com/rouuuge/SimpleAnalyticsLaravel",
+     "url": "https://github.com/simpleanalytics/laravel-package",
       "type": "git"
     }
  ],
@@ -21,7 +21,7 @@ Install the plugin:
 
 2. Add the package name in require with the branch name after the dev:
 
-`"rouuuge/simple-analytics": "dev-main"`
+`"simpleanalytics/laravel-package": "dev-main"`
 
 
 ## Using it
@@ -38,7 +38,7 @@ Include the scripts before your end body tag in your .blad template:
 ## Configuration
 The defaults are set in config/cors.php. Publish the config to copy the file to your own config:
 ```console
-php artisan vendor:publish --provider="Rouuuge\SimpleAnalytics\SimpleAnalyticsServiceProvider" --tag="config"
+php artisan vendor:publish --provider="simpleanalytics\laravel-package\SimpleAnalyticsServiceProvider" --tag="config"
 ```
 
 ## Hints
