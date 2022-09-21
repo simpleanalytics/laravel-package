@@ -8,7 +8,12 @@
 
 Install the plugin:
 
-1. Add repositories in composer.json
+1. Run
+```console
+composer require simpleanalytics/laravel-package
+```
+
+Or add repositories in composer.json
 
 ```
 "repositories": [
@@ -19,9 +24,11 @@ Install the plugin:
  ],
  ```
 
-2. Add the package name in require with the branch name after the dev:
+and add the package name in require with the branch name after the dev:
 
 `"simpleanalytics/laravel-package": "dev-main"`
+
+`"simpleanalytics/laravel-package": "^1.0"`
 
 
 ## Using it
