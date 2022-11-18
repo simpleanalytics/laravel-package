@@ -1,8 +1,10 @@
 <?php
 
-namespace Rouuuge\SimpleAnalytics;
+namespace SimpleAnalytics\LaravelPackage;
 
+use SimpleAnalytics\LaravelPackage\Http\Middleware\TrackApi as MiddlewareTrackApi;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
 
 class SimpleAnalyticsServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,7 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
         view()->share('settings', $this->getSettings());
         view()->share('settings_events', $this->getSettingsEvents());
         view()->share('enabled', config('simple-analytics.enabled'));
-        view()->share('auto_events', config('simple-analytics.automated_events'));
+        view()->share('auto_events', config('simple-analytics.automated-events'));
 
     }
 
@@ -24,6 +26,11 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'SimpleAnalytics');
+
+        if (config('simple-analytics.track-api')) {
+            $router = $this->app->make(Router::class);
+            $router->pushMiddlewareToGroup('api', MiddlewareTrackApi::class);
+        }
     }
 
     private function getDomain ()

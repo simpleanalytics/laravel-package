@@ -33,16 +33,22 @@ and add the package name in require with the branch name after the dev:
 
 ## Using it
 
-Include the scripts before your end body tag in your .blad template:
+Include the scripts before your end body tag in your .blade template:
 ```php
     ...
-    @include('simple-analytics::scripts')
+    @include('SimpleAnalytics::scripts')
 </body>
 ```
 ## Configuration
 The defaults are set in config/cors.php. Publish the config to copy the file to your own config:
 ```console
-php artisan vendor:publish --provider="simpleanalytics\laravel-package\SimpleAnalyticsServiceProvider" --tag="config"
+php artisan vendor:publish --provider="SimpleAnalytics\LaravelPackage\SimpleAnalyticsServiceProvider" --tag="config"
+```
+
+## Track Api Request
+To activate serverside tracking of the api activate track-api in your config file:
+```php
+'track-api' => true
 ```
 
 ## Hints

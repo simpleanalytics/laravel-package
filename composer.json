@@ -10,17 +10,17 @@
         }
     ],
     "require": {
-        "illuminate/support": "^9.29"
+        "illuminate/support": "*"
     },
     "autoload": {
       "psr-4": {
-        "simpleanalytics\\laravel-package\\": "src"
+        "SimpleAnalytics\\LaravelPackage\\": "src/"
       }
     },
     "extra": {
       "laravel": {
           "providers": [
-              "simpleanalytics\\laravel-package\\SimpleAnalyticsServiceProvider"
+              "SimpleAnalytics\\LaravelPackage\\SimpleAnalyticsServiceProvider"
           ]
       }
   }

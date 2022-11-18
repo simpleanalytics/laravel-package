@@ -30,15 +30,18 @@ return [
     'custom-settings' => array(),
 
     // EVENT SETTINGS
+    'automated-events' => false,
     // Automated Events outbound,emails,downloads
-    'automated_events' => false,
+    'data-collect' => array('outbound','emails','downloads'),
     // Auto collect downloads pdf,csv,docx,xlsx,zip,doc,xls
-    'data-collect' => array(),
-    // Download file extensions
-    'data-extensions' => array(),
+    'data-extensions' => array('png','csv','docx','xlsx','zip','doc','xls'),
     // Use titles of page
     'data-use-title' => true,
     // Use full URLs
     'data-full-urls' => false,
+
+    // Serversidetracking of api
+    // Track Api Calls
+    'track-api' => false
 
 ];
