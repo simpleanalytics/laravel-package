@@ -36,7 +36,7 @@ and add the package name in require with the branch name after the dev:
 Include the scripts before your end body tag in your .blade template:
 ```php
     ...
-    @include('simple-analytics::scripts')
+    @include('LaravelPackage::scripts')
 </body>
 ```
 ## Configuration
