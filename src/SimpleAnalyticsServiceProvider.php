@@ -25,7 +25,7 @@ class SimpleAnalyticsServiceProvider extends ServiceProvider
             __DIR__ . '/config/config.php' => config_path('simple-analytics.php'),
         ], 'config');
 
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'simpleanalytics\laravel-package');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'simple-analytics');
 
         if (config('simple-analytics.track-api')) {
             $router = $this->app->make(Router::class);
